@@ -1,9 +1,21 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
-
+//conponents
+//------icons
 import logo from '../icons/skylens.png';
 import userlight from '../icons/user/user-light.png';
+
+
+//------page utils
+import Dropdown from '@/Components/Dropdown.vue';
+import DropdownLink from '@/Components/DropdownLink.vue';
+
+
+
+//------page components
+import pagecontent from '@/Components/Homepage.vue';
+
 // import { useDark, useToggle} from '@vueuse/core';
   
 // import lightIcon from '../icons/Logo/icon.png';
@@ -42,12 +54,11 @@ defineProps({
 import { ref } from 'vue';
 
 
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
+
 const open = ref(false)
 </script>
 
-<template class="antialiased">
+<template class="antialiased md:w-auto">
 <!-- Navbar -->
 <div class="text-white  dark:bg-neutral-800 flex h-[60px] m-0 px-[35px] py-0 rounded-b-lg">
     <div class="flex items-center justify-center mx-auto w-11/12">
@@ -122,26 +133,34 @@ const open = ref(false)
           </button>
         </template>
       </div> -->
+      <div class="items-center space-x-6 space-y-2  hidden md:flex">
+        <div class="md:flex space-x-8 items-center w-full whitespace-nowrap ">
+          <h2>PRICING</h2>
+          <h2>ABAOUT US</h2>
+        </div>
+        
+      </div>
       <div class="ms-3 relative">
-  <Dropdown align="right" width="48">
-    <template #trigger>
-      <span class="inline-flex rounded-md">
-        <button
-        type="button"
-        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500  hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-        >
-        <img class="scale-50" :src="userlight" alt="Icon" />
-    </button>
-  </span>
-</template>
-<template #content>
-  <DropdownLink :href="route('login')"> LOG IN </DropdownLink>
-  <DropdownLink :href="route('register')"> SIGN UP </DropdownLink>
-</template>
-</Dropdown>
-</div>
-
+          <Dropdown align="right" width="48">
+            <template #trigger>
+              <span class="inline-flex rounded-md">
+                <button
+                type="button"
+                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500  hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                >
+                <img class="scale-50" :src="userlight" alt="Icon" />
+            </button>
+          </span>
+        </template>
+        <template #content>
+          <DropdownLink :href="route('login')"> LOG IN </DropdownLink>
+          <DropdownLink :href="route('register')"> SIGN UP </DropdownLink>
+        </template>
+        </Dropdown>
+      </div>
     </div>
 </div>
+
+<pagecontent/>
 
 </template>
