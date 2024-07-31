@@ -1,151 +1,168 @@
 <template>
-    <div class="antialiased mx-auto">
+    <div class="antialiased mx-auto bg-gray-100">
         <!-- Hero Section -->
-        <div
-            class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 px-4 sm:px-6 lg:px-8"
-        >
-            <h1
-                class="text-white text-center text-3xl sm:text-5xl font-bold leading-tight max-w-3xl mx-auto"
-            >
-                CHANGE THE WAY YOU VIEW THE WORLD
-            </h1>
+        <
+        <div class="relative h-screen overflow-hidden">
+            <transition name="fade" mode="out-in">
+                <video
+                    :key="currentBg"
+                    :src="videos[currentBg]"
+                    class="absolute inset-0 object-cover w-full h-full"
+                    autoplay
+                    muted
+                    loop
+                ></video>
+            </transition>
+
+            <div class="relative z-10 flex items-center justify-center h-full">
+                <h1
+                    class="text-center text-4xl sm:text-5xl font-bold leading-tight max-w-3xl mx-auto text-white"
+                >
+                    <transition name="font-change" mode="out-in">
+                        <span :key="currentFont" :class="fonts[currentFont]">
+                            CHANGE
+                        </span>
+                    </transition>
+                    THE WAY OF VIEW
+                </h1>
+            </div>
         </div>
 
         <!-- About Section -->
-        <div class="bg-white py-16 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto">
-                <div class="lg:flex items-center justify-between">
-                    <div class="lg:w-1/2 mb-8 lg:mb-0">
-                        <h2
-                            class="text-black font-bold text-2xl sm:text-3xl mb-4"
-                        >
-                            YOUR ULTIMATE DRONE FOOTAGE PROVIDER
-                        </h2>
-                        <p class="text-gray-700 text-lg">
-                            At Skylens, we specialize in capturing stunning
-                            aerial footage and high-quality photos tailored to
-                            your specific needs. Our nationwide network of
-                            experienced drone operators ensures that every
-                            project is handled with precision and delivered on
-                            time.
-                        </p>
-                    </div>
-                    <div class="lg:w-1/2 lg:pl-12">
-                        <latviaimg class="w-full h-auto"></latviaimg>
-                    </div>
-                </div>
+        <div class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <h2
+                    class="text-black font-bold text-2xl sm:text-3xl mb-4 text-center"
+                >
+                    YOUR ULTIMATE DRONE FOOTAGE PROVIDER
+                </h2>
+                <p class="text-gray-700 text-lg text-center mb-8">
+                    At Skylens, we specialize in capturing stunning aerial
+                    footage and high-quality photos tailored to your specific
+                    needs. Our nationwide network of experienced drone operators
+                    ensures that every project is handled with precision and
+                    delivered on time.
+                </p>
+                <latviaimg class="w-full h-auto max-w-md mx-auto"></latviaimg>
             </div>
         </div>
 
         <!-- Features Section -->
-        <div class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto">
-                <div class="lg:flex items-center justify-between mb-16">
-                    <div class="lg:w-1/2 mb-8 lg:mb-0">
-                        <img
-                            :src="statue"
-                            alt="Statue Image"
-                            class="w-full h-auto rounded-lg shadow-lg"
-                        />
-                    </div>
-                    <div class="lg:w-1/2 lg:pl-12">
+        <div class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto space-y-16">
+                <div class="flex flex-col md:flex-row items-center">
+                    <img
+                        :src="statue"
+                        alt="Statue Image"
+                        class="w-full md:w-1/2 h-auto mb-4 md:mb-0 md:mr-8"
+                    />
+                    <div>
                         <h2 class="text-3xl font-bold mb-4">
-                            The best video quality available
+                            THE BEST VIDEO QUALITY AVAILABLE
                         </h2>
-                        <p class="text-gray-700">
-                            Experience unparalleled clarity and detail in every
-                            shot.
-                        </p>
                     </div>
                 </div>
-                <div
-                    class="lg:flex items-center justify-between flex-row-reverse"
-                >
-                    <div class="lg:w-1/2 mb-8 lg:mb-0">
-                        <img
-                            :src="house"
-                            alt="House Image"
-                            class="w-full h-auto rounded-lg shadow-lg"
-                        />
-                    </div>
-                    <div class="lg:w-1/2 lg:pr-12">
+                <div class="flex flex-col md:flex-row-reverse items-center">
+                    <img
+                        :src="house"
+                        alt="House Image"
+                        class="w-full md:w-1/2 h-auto mb-4 md:mb-0 md:ml-8"
+                    />
+                    <div>
                         <h2 class="text-3xl font-bold mb-4">
-                            Best property angles
+                            BEST PROPERTY ANGLES
                         </h2>
-                        <p class="text-gray-700">
-                            Showcase properties from their most flattering
-                            perspectives.
-                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Pricing Section -->
-        <div class="bg-white py-16 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto">
+        <div class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto">
                 <h2
                     class="text-3xl sm:text-4xl font-extrabold text-center mb-12"
                 >
                     PRICING
                 </h2>
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="grid gap-8 md:grid-cols-3">
                     <div
                         v-for="plan in plans"
                         :key="plan.title"
-                        class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-105"
+                        class="bg-white border border-gray-200 p-6"
                     >
-                        <div class="px-6 py-8">
-                            <h3
-                                class="text-2xl font-semibold text-gray-900 mb-4"
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                            {{ plan.title }}
+                        </h3>
+                        <p class="text-3xl font-extrabold text-gray-900 mb-6">
+                            ${{ plan.price
+                            }}<span class="text-xl font-medium text-gray-500"
+                                >/month</span
                             >
-                                {{ plan.title }}
-                            </h3>
-                            <p
-                                class="text-4xl font-extrabold text-gray-900 mb-6"
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li
+                                v-for="(feature, index) in plan.features"
+                                :key="index"
+                                class="flex items-start"
                             >
-                                ${{ plan.price
-                                }}<span
-                                    class="text-xl font-medium text-gray-500"
-                                    >/month</span
-                                >
-                            </p>
-                            <ul class="space-y-4">
-                                <li
-                                    v-for="(feature, index) in plan.features"
-                                    :key="index"
-                                    class="flex items-start"
-                                >
-                                    <svg
-                                        class="h-6 w-6 text-green-500 mr-3"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5 13l4 4L19 7"
-                                        />
-                                    </svg>
-                                    <span class="text-gray-700">{{
-                                        feature
-                                    }}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="px-6 py-4 bg-gray-50">
-                            <button
-                                class="w-full bg-indigo-600 text-white rounded-md py-3 px-4 text-lg font-semibold hover:bg-indigo-700 transition-colors duration-200"
-                            >
-                                Select Plan
-                            </button>
-                        </div>
+                                <span class="text-sm text-gray-700">{{
+                                    feature
+                                }}</span>
+                            </li>
+                        </ul>
+                        <button
+                            class="w-full bg-black text-white py-2 px-4 text-sm font-semibold hover:bg-gray-800 transition-colors duration-200"
+                        >
+                            Select Plan
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="bg-white text-white py-6">
+            <div
+                class="container mx-auto flex justify-between items-center px-4"
+            >
+                <div class="flex items-center">
+                    <img :src="logo" alt="Skylens" class="h-8 w-auto mr-2" />
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Twitter</span>
+                        <img
+                            :src="twiterX"
+                            class="h-6 w-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        />
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Instagram</span>
+                        <img
+                            :src="instagram"
+                            class="h-6 w-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        />
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">YouTube</span>
+                        <img
+                            :src="youtube"
+                            class="h-6 w-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        />
+                    </a>
+                </div>
+            </div>
+        </footer>
     </div>
 </template>
 
@@ -153,8 +170,10 @@
 import latviaimg from "@/utils/svg/latvia.vue";
 import statue from "@/utils/img/statue.png";
 import house from "@/utils/img/house.png";
-import { ref } from "vue";
-
+import logo from "../utils/img/skylens.png";
+import twiterX from "../utils/img/twitterx-100.png";
+import instagram from "../utils/img/instagram-100.png";
+import youtube from "../utils/img/youtube-100.png";
 const plans = ref([
     {
         title: "Basic Plan",
@@ -196,4 +215,59 @@ const plans = ref([
         ],
     },
 ]);
+
+import { ref, onMounted, onUnmounted } from "vue";
+
+const videos = [
+    "/path/to/video1.mp4",
+    "/path/to/video2.mp4",
+    "/path/to/video3.mp4",
+];
+
+const fonts = ["font-serif", "font-sans", "font-mono"];
+
+const currentBg = ref(0);
+const currentFont = ref(0);
+let intervalId;
+
+const changeBackground = () => {
+    currentBg.value = (currentBg.value + 1) % videos.length;
+    currentFont.value = (currentFont.value + 1) % fonts.length;
+};
+
+onMounted(() => {
+    intervalId = setInterval(changeBackground, 5000); // Change every 5 seconds
+
+    // Stop the animation after 30 seconds
+    setTimeout(() => {
+        clearInterval(intervalId);
+    }, 30000);
+});
+
+onUnmounted(() => {
+    clearInterval(intervalId);
+});
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.font-change-enter-active,
+.font-change-leave-active {
+    transition: all 0.5s ease;
+}
+
+.font-change-enter-from,
+.font-change-leave-to {
+    opacity: 0;
+    transform: scale(0.9);
+}
+</style>
