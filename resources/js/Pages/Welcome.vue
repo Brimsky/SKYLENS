@@ -3,9 +3,11 @@ import { Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
 //conponents
 //------icons
-import logo from '../icons/skylens.png';
-import userlight from '../icons/user/user-light.png';
+import logo from '../utils/img/skylens.png';
+import userlight from '../utils/img/user/user-light.png';
 
+//------page components
+import pagecontent from '../Components/Homepage.vue';
 
 //------page utils
 import Dropdown from '@/Components/Dropdown.vue';
@@ -13,8 +15,6 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 
 
 
-//------page components
-import pagecontent from '@/Components/Homepage.vue';
 
 // import { useDark, useToggle} from '@vueuse/core';
   
